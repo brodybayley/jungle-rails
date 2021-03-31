@@ -1,5 +1,7 @@
 <% if enhanced_cart.blank? %>
-  <h1>Cart is Empty</h1>
+  <div class="alert alert-primary" role="alert">
+    Cart is Empty! <a href="#" class="alert-link"><%= link_to 'Click to search for new items', :root %>
+  </div>
 <% else %>
 <section class="cart-show">
 
