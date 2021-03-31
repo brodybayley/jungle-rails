@@ -20,8 +20,10 @@
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
-
-  <aside class="sold">
-    <%= humanized_money_with_symbol product.price %>
-  </aside>
+  
+  <% if product.quantity.zero? %>
+    <aside class="sold">
+      <h5>SOLD OUT!</h5>
+    </aside>
+  <% end %>
 </article>
