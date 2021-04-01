@@ -17,14 +17,15 @@ class Admin::CategoriesController < ApplicationController
       redirect_to [:admin, :categories], notice: 'Category created!'
     else
       render :new
+    end
   end
-end
 
   private
 
   def category_params
     params.require(:category).permit(
-      :name,
+      :name
     )
   end
+  
 end
