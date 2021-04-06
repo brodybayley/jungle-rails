@@ -7,11 +7,14 @@ RSpec.describe Product, type: :model do
     it 'creates a product' do
       @category = Category.create(name: "plants")
       @product = Product.create(name: "shamrock", price: 2500, quantity: 10, category: @category)
+      puts @product.errors.full_messages
+      expect(@product).to be_valid
     end
 
     it 'contains a name' do
       @category = Category.create(name: "plants")
       @product = Product.create(name: nil, price: 2500, quantity: 10, category: @category)
+      expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
     it 'contains a price' do
