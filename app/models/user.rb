@@ -6,7 +6,23 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :password, presence: true
-  validates :password, length { minimum: 3 }
+  validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
-  validates :password_confirmation, length { minimum: 3 }
+
+  before_save :downcase_fields
+
+  def downcase_fields
+    self.email.downcase!
+  end
+
+  def self.authenticate_with_credentials(email, password) 
+    user = User.find_by_email(email.strip.downcase)
+
+    if user && user.authenticate(password)
+      user
+    else
+      nil
+    end
+  end
+
 end
