@@ -14,6 +14,11 @@ RSpec.describe User, type: :model do
       @user = User.new(first_name: 'Braungel', last_name: 'Bayley', email: 'bron25@gmail.com', password: "123456", password_confirmation: "123456")
       expect(@user.errors.full_messages).to include("Email has already been taken")
 
+    it 'must contain an email' do 
+      @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: nil, password: "hello1", password_confirmation: "hello1")
+      expect(@user.errors.full_messages).to include("Email can't be blank")
+    end
+
     it 'must contain a first name' do 
       @user = User.create(first_name: nil, last_name: 'Robin', email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hello1")
       expect(@user.errors.full_messages).to include("First name can't be blank")
@@ -29,23 +34,20 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
+    it 'must contain a matching password and password confirmation' do 
+      @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hola1")
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
+
     it 'must contain a password' do 
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: nil, password_confirmation: "hello1")
+      expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
     it 'must contain a password confirmation' do 
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: "hello1", password_confirmation: nil)
+      expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
     end
-
-    it 'must contain a matching password and password confirmation' do 
-      @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hola1")
-    end
-
-    it 'must contain an email' do 
-      @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: nil, password: "hello1", password_confirmation: "hello1")
-    end
-
-
 
   end
 end
