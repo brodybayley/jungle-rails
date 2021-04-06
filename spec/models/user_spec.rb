@@ -56,25 +56,25 @@ RSpec.describe User, type: :model do
     it 'logs in user' do
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: 'hello1', password_confirmation: 'hello1')
       authenticate = User.authenticate_with_credentials(@user.email, @user.password)
-      expect(@authenticate).to_not be_nil
+      expect(authenticate).to_not be_nil
     end
 
     it 'should fail to log in user' do
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: 'hello1', password_confirmation: 'hello1')
       authenticate = User.authenticate_with_credentials(@user.email, "hola123")
-      expect(@authenticate).to be_nil
+      expect(authenticate).to be_nil
     end
 
     it 'should ignore whitespace' do
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: 'hello1', password_confirmation: 'hello1')
       authenticate = User.authenticate_with_credentials(' shon25@gmail.com ', @user.password)
-      expect(@authenticate).to_not be_nil
+      expect(authenticate).to_not be_nil
     end
 
     it 'should ignore case in email' do
       @user = User.create(first_name: 'Shaungel', last_name: 'Robin', email: 'shon25@gmail.com', password: 'hello1', password_confirmation: 'hello1')
       authenticate = User.authenticate_with_credentials('sHOn25@gmail.com', @user.password)
-      expect(@authenticate).to_not be_nil
+      expect(authenticate).to_not be_nil
     end
   end
 end
