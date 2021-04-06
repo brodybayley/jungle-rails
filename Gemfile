@@ -4,7 +4,7 @@ ruby "2.3.5"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '0.18.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,13 +45,11 @@ group :development, :test do
   gem 'byebug'
   gem 'quiet_assets'
   gem 'dotenv-rails'
-end
-
-group :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'database_cleaner'
 end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
