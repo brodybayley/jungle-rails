@@ -16,8 +16,17 @@ RSpec.describe User, type: :model do
 
     it 'must contain a first name' do 
       @user = User.create(first_name: nil, last_name: 'Robin', email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hello1")
-      puts @product.errors.full_messages
       expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it 'must contain a last name' do 
+      @user = User.create(first_name: 'Shaungel', last_name: nil, email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hello1")
+      expect(@user.errors.full_messages).to include("Last name can't be blank")
+    end
+
+    it 'must contain a password with a minimum length of 6 characters' do
+      @user = User.create(first_name: nil, last_name: 'Robin', email: 'shon25@gmail.com', password: "hello", password_confirmation: "hello")
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
     it 'must contain a password' do 
@@ -37,12 +46,6 @@ RSpec.describe User, type: :model do
     end
 
 
-    it 'must contain a last name' do 
-      @user = User.create(first_name: 'Shaungel', last_name: nil, email: 'shon25@gmail.com', password: "hello1", password_confirmation: "hello1")
-    end
 
-    it 'must contain a password with a minimum length of 6 characters' do
-      @user = User.create(first_name: nil, last_name: 'Robin', email: 'shon25@gmail.com', password: "hello", password_confirmation: "hello")
-    end
   end
 end
