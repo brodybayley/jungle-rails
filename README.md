@@ -4,7 +4,7 @@ A mini e-commerce application built with Rails 4.2 where users can view products
 
 # Final Product
 
-!["Screenshot of main feed"]()
+!["Screenshot of main feed"](https://github.com/brodybayley/jungle-rails/blob/master/docs/main_feed.png)
 
 !["Screenshot of product details"]()
 
