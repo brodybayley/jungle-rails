@@ -8,7 +8,7 @@ A mini e-commerce application built with Rails 4.2 where users can view products
 
 !["Screenshot of product details"](https://github.com/brodybayley/jungle-rails/blob/master/docs/product_details.png)
 
-!["Screenshot of cart"]()
+!["Screenshot of cart"](https://github.com/brodybayley/jungle-rails/blob/master/docs/cart.png)
 
 ## Setup
 
